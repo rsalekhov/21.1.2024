@@ -19,17 +19,15 @@ CREATE TABLE ArtistGenres (
 CREATE TABLE Albums (
     AlbumID INT PRIMARY KEY,
     AlbumName VARCHAR(255) NOT NULL,
-    ReleaseYear INT CHECK (ReleaseYear >= 1900 AND ReleaseYear <= 2100),
-    ArtistID INT,
-    FOREIGN KEY (ArtistID) REFERENCES Artists(ArtistID)
+    ReleaseYear INT CHECK (ReleaseYear >= 1900 AND ReleaseYear <= 2100)
 );
 
-CREATE TABLE AlbumGenres (
+CREATE TABLE AlbumArtists (
     AlbumID INT,
-    GenreID INT,
-    PRIMARY KEY (AlbumID, GenreID),
+    ArtistID INT,
+    PRIMARY KEY (AlbumID, ArtistID),
     FOREIGN KEY (AlbumID) REFERENCES Albums(AlbumID),
-    FOREIGN KEY (GenreID) REFERENCES Genres(GenreID)
+    FOREIGN KEY (ArtistID) REFERENCES Artists(ArtistID)
 );
 
 CREATE TABLE Tracks (
